@@ -22,9 +22,11 @@ For how VPA adjusts workload resource requests and limits, see
 {{< include "task-tutorial-prereqs.md" >}} {{< version-check >}}
 
 * [Helm](https://helm.sh/docs/intro/install/) 3.
-* [Metrics Server](https://github.com/kubernetes-sigs/metrics-server#readme) running in the cluster,
-  because VPA reads resource metrics from the `metrics.k8s.io` API. For background, see
-  [Resource metrics pipeline](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-server).
+* A working [resource metrics pipeline](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/)
+  that serves the [Metrics API](/docs/tasks/debug/debug-cluster/resource-metrics-pipeline/#metrics-api)
+  (`metrics.k8s.io`), which VPA uses for CPU and memory data. Many clusters run
+  [Metrics Server](https://github.com/kubernetes-sigs/metrics-server#readme); any other implementation
+  of that API is also valid.
 
 <!-- steps -->
 
