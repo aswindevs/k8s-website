@@ -49,6 +49,15 @@ helm upgrade --install vertical-pod-autoscaler autoscalers/vertical-pod-autoscal
   --namespace kube-system
 ```
 
+## Admission webhook TLS
+
+By default, the chart provisions TLS for the VPA admission webhook by running a Job that uses the
+`registry.k8s.io/ingress-nginx/kube-webhook-certgen` image to generate certificates and configure the
+webhook. For other TLS modes or customization (for example, supplying your own certificates or using
+cert-manager), see
+[Webhook management](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/charts/vertical-pod-autoscaler/README.md#webhook-management)
+in the chart README.
+
 ## Verify the installation
 
 Check that the recommender, updater, and admission controller are running.
@@ -61,6 +70,6 @@ kubectl --namespace=kube-system get pods -l app.kubernetes.io/instance=vertical-
 ## {{% heading "whatsnext" %}}
 
 * Read [Vertical Pod Autoscaling](/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/) to create and configure a `VerticalPodAutoscaler` object: the API, [update modes](/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/#update-modes), [resource policies](/docs/concepts/workloads/autoscaling/vertical-pod-autoscale/#resource-policies), and limitations of the feature.
-* For Helm chart values, webhook TLS options, and upgrades, see the
+* For Helm chart values and upgrades, see the
   [chart README](https://github.com/kubernetes/autoscaler/blob/master/vertical-pod-autoscaler/charts/vertical-pod-autoscaler/README.md)
   in the Autoscaler repository.
